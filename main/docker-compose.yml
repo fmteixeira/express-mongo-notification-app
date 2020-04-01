@@ -6,6 +6,10 @@ volumes:
   mongo-data:
     external: false
 
+networks:
+  backend:
+    driver: bridge
+
 services:
   api:
     container_name: app
@@ -30,6 +34,3 @@ services:
       - "27017:27017"
     networks:
       - backend
-networks:
-  backend:
-    driver: bridge
