@@ -1,0 +1,35 @@
+version: "3"
+
+volumes:
+  api-data:
+    external: false
+  mongo-data:
+    external: false
+
+services:
+  api:
+    container_name: app
+    image: app
+    build: ../app
+    volumes:
+      - api-data:/usr/src/app
+    networks:
+      - backend
+    ports:
+      - "3000:3000"
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - backend
+networks:
+  backend:
+    driver: bridge
