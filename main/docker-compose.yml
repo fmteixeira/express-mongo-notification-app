@@ -1,26 +1,22 @@
 version: "3"
 
 volumes:
-  api-data:
+  app-data:
     external: false
   mongo-data:
     external: false
 
-networks:
-  backend:
-    driver: bridge
-
 services:
-  api:
+  app:
     container_name: app
     image: app
     build: ../app
     volumes:
-      - api-data:/usr/src/app
-    networks:
-      - backend
+      - app-data:/usr/src/app
     ports:
       - "3000:3000"
+    depends_on:
+      - "mongo"
   mongo:
     container_name: mongo
     image: mongo
@@ -32,5 +28,3 @@ services:
       - mongo-data:/data/db
     ports:
       - "27017:27017"
-    networks:
-      - backend

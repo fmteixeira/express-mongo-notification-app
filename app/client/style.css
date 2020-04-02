@@ -1,2 +1,40 @@
-.push-btn {
+#app-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  max-width: 200px;
+  margin-top: 20px;
+}
+
+#app-list li {
+  font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  background-color: rgba(255, 0, 0, 0.25);
+}
+
+#app-list li:last-child {
+  border: none;
+}
+
+#app-list li a {
+  text-decoration: none;
+  color: #000;
+
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+  display: block;
+  width: 200px;
+}
+
+#app-list li.subscribed {
+  background-color: rgba(0, 128, 0, 0.25);
+}
+
+#app-list li a:hover {
+  background: #f6f6f6;
 }
